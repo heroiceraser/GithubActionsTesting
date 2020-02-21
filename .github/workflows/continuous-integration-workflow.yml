@@ -3,7 +3,7 @@ name: Greet Everyone
 on:
   push:
   pull_request:
-  pull_request_comment:
+  issue_comment:
     types: [created]
 
 
