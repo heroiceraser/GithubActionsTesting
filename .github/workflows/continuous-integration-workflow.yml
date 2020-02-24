@@ -30,7 +30,7 @@ jobs:
         id: step1
         run: |
           echo ::set-output name=status::failure
-          echo "hello"
+          cd xx
           echo ::set-output name=status::success
         continue-on-error: true
 
@@ -43,3 +43,4 @@ jobs:
         if: steps.step1.outputs.status != 'success'
         run: |
           echo "Something went wrong!"
+          cd xx
