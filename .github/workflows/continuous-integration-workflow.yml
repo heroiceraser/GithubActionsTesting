@@ -30,6 +30,8 @@ jobs:
         id: step1
         run: |
           echo ::set-output name=status::failure
+          cd xx
+          echo ::set-output name=status::success
         continue-on-error: true
 
       - name: Notify slack when success
