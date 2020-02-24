@@ -29,7 +29,9 @@ jobs:
       - name: fail
         id: step1
         run: |
+          echo "Hello"
           cd xxx
+          echo "byebye"
           if [ $? -eq 0 ]
           then
             echo "yep"
