@@ -29,37 +29,17 @@ jobs:
       - name: fail
         id: step1
         run: |
-          echo "Hello"
+          echo ::set-output name=state::failure
           cd xxx
-          echo "byebye"
-          if [ $? -eq 0 ]
-          then
-            echo "yep"
-            echo ::set-output name=status::success
-          else
-            echo "nope"
-            echo ::set-output name=state::failure
-          fi
+          echo ::set-output name=status::success
         continue-on-error: true
 
       - name: rerun
         if: steps.step1.outputs.status == 'failure'
         run: |
-          cd xxx
-          if [ $? -eq 0 ]
-          then
-            echo "yep2"
-          else
-            echo "nope3"
-          fi
+          echo "miep"
 
       - name: rerun
         if: steps.step1.outputs.status == 'success'
         run: |
-          cd xxx
-          if [ $? -eq 0 ]
-          then
-            echo "yep555"
-          else
-            echo "nope5555"
-          fi
+          echo "success!!!!!"
