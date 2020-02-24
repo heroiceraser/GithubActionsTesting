@@ -42,7 +42,7 @@ jobs:
         run: |
           echo "Something went wrong!"
           echo ::set-output name=status::failure
-          cd xx
+#          cd xx
           echo ::set-output name=status::success
 
 #
