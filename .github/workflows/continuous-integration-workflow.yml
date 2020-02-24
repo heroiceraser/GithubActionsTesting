@@ -26,20 +26,18 @@ jobs:
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
 
       #
-      - name: fail
+      - name: set output
         id: step1
         run: |
-          echo ::set-output name=state::failure
-          cd xxx
-          echo ::set-output name=status::success
+          echo ::set-output name=status::failure
         continue-on-error: true
 
-      - name: rerun
-        if: steps.step1.outputs.status == 'failure'
-        run: |
-          echo "miep"
-
-      - name: rerun
+      - name: Notify slack when success
         if: steps.step1.outputs.status == 'success'
         run: |
-          echo "success!!!!!"
+          echo "Success!"
+
+      - name: Notify slack when it not run
+        if: steps.step1.outputs.status != 'success'
+        run: |
+          echo "Something went wrong!"
