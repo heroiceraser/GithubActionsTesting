@@ -28,6 +28,7 @@ jobs:
       #
       - name: fail
         run: cd xx
+        continue-on-error: true
 
       - name: only on fail
         if: failure()
