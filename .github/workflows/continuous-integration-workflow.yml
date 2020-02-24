@@ -34,11 +34,7 @@ jobs:
           echo ::set-output name=status::success
         continue-on-error: true
 
-      - name: Notify slack when success
-        if: steps.step1.outputs.status == 'success'
-        run: |
-          echo "Success!"
-
+#
       - name: Notify slack when it not run
         id: step2
         if: steps.step1.outputs.status != 'success'
@@ -48,10 +44,6 @@ jobs:
           cd xx
 
 #
-      - name: Notify slack when success
-        if: steps.step2.outputs.status == 'success'
-        run: |
-          echo "Success!"
 
       - name: Notify slack when it not run
         id: step3
@@ -62,18 +54,12 @@ jobs:
           cd xx
 
 #
-      - name: Notify slack when success
-        if: steps.step3.outputs.status == 'success'
-        run: |
-          echo "Success!"
-
       - name: Notify slack when it not run
         id: step4
         if: steps.step3.outputs.status != 'success'
         continue-on-error: true
         run: |
-          echo "Something went wrong!"
-          cd xx
+          echo "Something went right!"
 
 #
       - name: Notify slack when it not run
