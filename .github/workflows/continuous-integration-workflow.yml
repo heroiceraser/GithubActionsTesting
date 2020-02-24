@@ -27,9 +27,12 @@ jobs:
 
       #
       - name: fail
-        run: cd xx
-        continue-on-error: true
+        run: |
+          cd xxx
+          if [ $? -eq 0 ]
+          then
+            echo "yep"
+          else
+            echo "nope"
+          fi
 
-      - name: only on fail
-        if: failure()
-        run: echo 'success'
