@@ -35,7 +35,7 @@ jobs:
         continue-on-error: true
 
 #
-      - name: Notify slack when it not run
+      - name: Rerun 1
         id: step2
         if: steps.step1.outputs.status != 'success'
         continue-on-error: true
@@ -45,7 +45,7 @@ jobs:
 
 #
 
-      - name: Notify slack when it not run
+      - name: Rerun 2
         id: step3
         if: steps.step2.outputs.status != 'success'
         continue-on-error: true
@@ -54,7 +54,7 @@ jobs:
           cd xx
 
 #
-      - name: Notify slack when it not run
+      - name: Rerun 3
         id: step4
         if: steps.step3.outputs.status != 'success'
         continue-on-error: true
@@ -62,8 +62,8 @@ jobs:
           echo "Something went right!"
 
 #
-      - name: Notify slack when it not run
+      - name: Stop on error
         if: steps.step4.outputs.status != 'success'
         run: |
           echo "Something went wrong!"
-          cd xx
+          exit -1
