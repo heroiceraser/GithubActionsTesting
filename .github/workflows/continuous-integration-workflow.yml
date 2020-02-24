@@ -62,6 +62,5 @@ jobs:
         if: steps.step1.outputs.status != 'success' && steps.step2.outputs.status != 'success' && steps.step-3.outputs.status != 'success'
         run: |
           echo ::set-output name=status::failure
-          cd xx
           echo ::set-output name=status::success
 
