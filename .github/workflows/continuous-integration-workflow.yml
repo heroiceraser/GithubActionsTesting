@@ -20,6 +20,15 @@ jobs:
         with:
           who-to-greet: 'Mona the Octocat'
         id: hello
+
       # This step prints an output (time) from the previous step's action.
       - name: Echo the greeting's time
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
+
+      #
+      - name: fail
+        run: cd xx
+
+      - name: only on fail
+        if: failure()
+        run: echo 'success'
