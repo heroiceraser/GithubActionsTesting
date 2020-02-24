@@ -48,7 +48,7 @@ jobs:
 
       - name: Rerun 2
         id: step3
-        if: steps.step2.outputs.status != 'success'
+        if: steps.step1.outputs.status != 'success' && steps.step2.outputs.status != 'success'
         continue-on-error: true
         run: |
           echo "Something went wrong!"
@@ -58,7 +58,7 @@ jobs:
 
 #
       - name: Rerun 3
-        if: steps.step3.outputs.status != 'success'
+        if: steps.step1.outputs.status != 'success' && steps.step2.outputs.status != 'success' && steps.step3.outputs.status != 'success'
         run: |
           echo "Something went right!"
 
