@@ -1,0 +1,14 @@
+name: Secrets2
+
+on:
+  [push, pull_request]
+
+jobs:
+  build:
+
+    name: Secret2
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Can i See this secret?
+        run: echo 'Secret - ${{ secrets.TESTSECRET }}.'
