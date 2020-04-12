@@ -1,25 +1,15 @@
-name: Comments
+name: Utils
 on: pull_request
 
 jobs:
   comment:
-    # Creating a comment on the PR with useful information for contributors and POs
-    name: Create Info Comment
+    name: Add comments to PR
     runs-on: ubuntu-latest
     steps:
-      - name: Add comments to PR
-        uses: peter-evans/commit-comment@v1
+      - uses: actions/checkout@master
+      - uses: harupy/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          body: |
-            Thank you for your contribution. :smiley:
+          filename: info_comment.md
 
-            **Commands to checkout this branch:**
-            ```
-            git fetch upstream pull/{pull_id}/head:{branch_name}
-            git checkout {branch_name}
-            ```
-
-            **The PR can be inspected at:**
-            ```
-            https://**************
-            ```
