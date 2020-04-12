@@ -1,0 +1,25 @@
+name: Comments
+on: pull_request
+
+jobs:
+  comment:
+    # Creating a comment on the PR with useful information for contributors and POs
+    name: Create Info Comment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add comments to PR
+        uses: peter-evans/commit-comment@v1
+        with:
+          body: |
+            Thank you for your contribution. :smiley:
+
+            **Commands to checkout this branch:**
+            ```
+            git fetch upstream pull/{pull_id}/head:{branch_name}
+            git checkout {branch_name}
+            ```
+
+            **The PR can be inspected at:**
+            ```
+            https://**************
+            ```
